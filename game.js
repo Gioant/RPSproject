@@ -30,7 +30,7 @@ function playerPlay(){
         //if user pressed the cancel button
         if (input === null) {
             //break out of function to allow user to exit
-            console.log("%cUser cancelled prompt.", "color: violet; font-size: 14px");
+            console.log("%cUser cancelled prompt", "color: violet; font-size: 13px");
             return undefined;
         }
 
@@ -58,21 +58,55 @@ function playerPlay(){
     return playerChoice;
 }
 
+
 // to play a single round of the game
 function playRound(playerSelection, computerSelection) {
     let draw = "It's A Tie!"
-    let win = "You Win. Rock Beats Scissors";
-    let lose = "You Lose. Paper Beats Rock";
-
+    let win = "Player Wins";
+    let lose = "Computer Wins";
+    //if the choice chosen from both player & cpu is the same value
     if(playerSelection == computerSelection){
-        return console.log(draw);
-    } else if (computerSelection == 'paper') {
+        //output string draw!
+        return draw;
+
+    // else if player is rock 
+    } else if (playerSelection == 'rock') {
+        //verify if computer chose paper
+        if(computerSelection == 'paper'){
+            console.log("%cYou lose! Paper beats Rock", "color: orange; font-size: 14px");
+            return lose;
+        } else {
+            //computer answer is not paper
+            console.log("%cYou Win! Rock beats Scissors", "color: Lime; font-size: 14px");
+            return win;
+        }
+    } 
+
+    else if (playerSelection == 'scissors') {
+        if(computerSelection == 'rock'){
+            console.log("%cYou lose! Rock beats Scissors", "color: orange; font-size: 14px");
+            return lose;
+        } else {
+            console.log("%cYou Win! Scissors beats Paper", "color: Lime; font-size: 14px");
+            return win;
+        }
+    } 
+    
+    else if (playerSelection == 'paper') {
+        if(computerSelection == 'scissors'){
+            console.log("%cYou lose! Scissors beats paper", "color: orange; font-size: 14px");
+            return lose;
+        } else {
+            console.log("%cYou Win! Paper beats rock", "color: Lime; font-size: 14px");
+            return win;
+        }
     }
 }
 
+//save the choice from functions
 const playerSelection = playerPlay();
 const computerSelection = computerPlay();
 
+console.log("\n")
 
-
-// console.log(playRound(playerSelection, computerSelection));
+console.log("%c" + playRound(playerSelection, computerSelection), "color: khaki");
