@@ -1,31 +1,40 @@
-//keep prompting user until they enter a choice
-do {
-    //prompt user for their choice
-    let input = prompt("Enter Rock, Paper or Scissors");
-    //make their choice case-insensitive so they can input
-    let playerSelection = input.toLowerCase();
-}while(input != null);
-
+//function that outputs the choice for computer
 function computerPlay(){
     //generate a random number between 1-3
     let random = Math.floor(Math.random() * 3) + 1;
-    //display random number to console
-    console.log("random number is: " + random);
+    let computerChoice = '';
+
     // if conditions that returns either rock,paper or scissors depending random number generated
     if(random === 1){
-        return console.log('Rock');
+        computerChoice = 'rock';
+        console.log("Computer Chose: " + computerChoice);
+        return computerChoice;
     } else if (random === 2){
-        return console.log('Paper');
+        computerChoice = 'paper';
+        console.log("Computer Chose: " + computerChoice);
+        return computerChoice;
     } else {
-        return console.log('Scissors');
+        computerChoice = 'scissors';
+        console.log("Computer Chose: " + computerChoice);
+        return computerChoice;
     }
 }
 
-//call function
-computerPlay();
 
+// to play a single round of the game
+function playRound(playerSelection, computerSelection) {
+    let draw = "It's A Tie!"
+    let win = "You Win. Rock Beats Scissors";
+    let lose = "You Lose. Paper Beats Rock";
 
-//function to play a single round of the game
-function playRound(playerSelection, computerSelection){
-    
+    if(playerSelection == computerSelection){
+        return draw;
+    } else if (computerSelection == 'paper') {
+    }
 }
+
+const computerSelection = computerPlay();
+
+
+
+// console.log(playRound(playerSelection, computerSelection));
