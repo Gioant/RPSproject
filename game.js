@@ -26,8 +26,12 @@ function playerPlay(){
     while (!valid){
         //prompt user for choice
         let input = prompt("Enter Rock, Paper or Scissors");
-        
-        //if user's input is not empty
+            //if user pressed the cancel button
+        if (input === null) {
+            //break out of function to allow user to exit
+            return undefined;
+        }
+            //if user's input is not empty
         if (input.trim() != null){
             //make their input all lowercase
             var playerChoice = input.toLowerCase();
@@ -44,12 +48,8 @@ function playerPlay(){
                 //break out of loop just in case
                 break;
             }
-        
-            //if user pressed the cancel button
-        } if (input === null) {
-            //break out of function to allow user to exit
-            return undefined;
         }
+
     }
     //return value 
     return playerChoice;
