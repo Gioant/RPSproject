@@ -44,8 +44,11 @@ function playerPlay(){
                 //break out of loop just in case
                 break;
             }
-        } else {
-            alert("Invalid Input! Input Cannot be Empty.");
+        
+            //if user pressed the cancel button
+        } if (input === null) {
+            //break out of function to allow user to exit
+            return undefined;
         }
     }
     //return value 
