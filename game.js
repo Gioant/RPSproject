@@ -7,15 +7,15 @@ function computerPlay(){
     // if conditions that returns either rock,paper or scissors depending random number generated
     if(random === 1){
         computerChoice = 'rock';
-        console.log("Computer Chose: " + computerChoice);
+        console.log("%cComputer Chose: " + computerChoice, "color: Gold");
         return computerChoice;
     } else if (random === 2){
         computerChoice = 'paper';
-        console.log("Computer Chose: " + computerChoice);
+        console.log("%cComputer Chose: " + computerChoice, "color: Gold");
         return computerChoice;
     } else {
         computerChoice = 'scissors';
-        console.log("Computer Chose: " + computerChoice);
+        console.log("%cComputer Chose: " + computerChoice, "color: Gold");
         return computerChoice;
     }
 }
@@ -26,7 +26,7 @@ function playerPlay(){
     while (!valid){
         //prompt user for choice
         let input = prompt("Enter Rock, Paper or Scissors");
-        
+
         //if user pressed the cancel button
         if (input === null) {
             //break out of function to allow user to exit
@@ -40,16 +40,16 @@ function playerPlay(){
             var playerChoice = input.toLowerCase();
 
             //verify if the playerChoice is a valid choice
-            if(playerChoice != 'rock' || playerChoice != 'paper' || playerChoice != 'scissors'){
-                //display alert err msg
-                alert("Incorrect Input. Please Enter A Valid Choice From Prompt.");
-                valid = false;
-            } else {
-                //else input is valid!
-                console.log(playerChoice); // console log the value
+            if(playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors'){
+                //if input is valid
+                console.log("%cYou chose: " + playerChoice, "color: aqua"); // console log the value
                 valid = true;
                 //break out of loop just in case
                 break;
+            } else {
+                 //display alert err msg
+                alert("Incorrect Input. Please Enter A Valid Choice From Prompt.");
+                valid = false;
             }
         }
 
@@ -71,7 +71,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 const playerSelection = playerPlay();
-// const computerSelection = computerPlay();
+const computerSelection = computerPlay();
 
 
 
