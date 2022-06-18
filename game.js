@@ -25,6 +25,9 @@ function playerPlay(){
     //boolean variable to be used as a condition for while loop
     let valid = false;
 
+    //to store input from user
+    let playerChoice = '';
+
     while (!valid){
         //prompt user for choice
         let input = prompt("Enter Rock, Paper or Scissors");
@@ -37,8 +40,7 @@ function playerPlay(){
         } else {
             input.trim();
             //make their input all lowercase
-            var playerChoice = input.toLowerCase();
-
+            playerChoice = input.toLowerCase();
             //verify if the playerChoice is a valid choice
             if(playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors'){
                 //if input is valid
@@ -165,7 +167,7 @@ function game(){
         } else if (wins < losses) {
             return console.log("%cYou Were Defeated! Game Over!", "color: OrangeRed; font-size: 13px");
         } else if (wins == losses){
-            return console.log("%Draw! Who will win next time?", "color: Moccasin; font-size: 13px");
+            return console.log("%cDraw! Who will win next time?", "color: Moccasin; font-size: 13px");
         } else {
             return console.log("Error! Something happened..")
         }
