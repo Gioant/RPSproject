@@ -32,7 +32,13 @@ function playerPlay(){
         //prompt user for choice
         let input = prompt("Enter Rock, Paper or Scissors");
 
-        
+        //if user pressed the cancel button
+        if (input === null) {
+            //break out of function to allow user to exit
+            console.log("%cUser cancelled prompt", "color: violet; font-size: 13px");
+            return undefined;
+        }
+
             //if user's input is not empty
         if (input.trim() != null){
             //make their input all lowercase
@@ -50,12 +56,6 @@ function playerPlay(){
                 alert("Incorrect Input. Please Enter A Valid Choice From Prompt.");
                 valid = false;
             }
-        }
-        //if user pressed the cancel button
-        if (input === null) {
-            //break out of function to allow user to exit
-            console.log("%cUser cancelled prompt", "color: violet; font-size: 13px");
-            return undefined;
         }
 
     }
