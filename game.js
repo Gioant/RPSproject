@@ -7,15 +7,12 @@ function computerPlay(){
     // if conditions that returns either rock,paper or scissors depending random number generated
     if(random === 1){
         computerChoice = 'rock';
-        console.log("%cComputer Chose: " + computerChoice, "color: Gold");
         return computerChoice;
     } else if (random === 2){
         computerChoice = 'paper';
-        console.log("%cComputer Chose: " + computerChoice, "color: Gold");
         return computerChoice;
     } else {
         computerChoice = 'scissors';
-        console.log("%cComputer Chose: " + computerChoice, "color: Gold");
         return computerChoice;
     }
     
@@ -47,7 +44,7 @@ function playerPlay(){
             //verify if the playerChoice is a valid choice
             if(playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors'){
                 //if input is valid
-                console.log("%cYou chose: " + playerChoice, "color: aqua"); // console log the value
+                console.log("%cYou chose: " + playerChoice, "color: Magenta"); // console log the value
                 valid = true;
                 //break out of loop just in case
                 break;
@@ -135,6 +132,16 @@ function game(){
         const playerSelection = playerPlay();
         const computerSelection = computerPlay();
 
+        //verify if user cancelled or not 
+        if (playerSelection == undefined){
+            console.log("Exiting game... GoodBye!");
+            // if the playerPLay function value is undefined return undefined and break out of function
+            return undefined;
+        }
+
+        //output the choice made by computer to console
+        console.log("%cComputer Chose: " + computerSelection, "color: Gold");
+
         //save the return value of function to a variable
         let result = playRound(playerSelection, computerSelection);
 
@@ -157,11 +164,11 @@ function game(){
 
     if (!error){
         if(wins > losses){
-            return console.log("%cCongratulations! You Won The Battle! ", "color: MediumSlateBlue");
+            return console.log("%cCongratulations! You Won The Battle! ", "color: Yellow; font-size: 13px");
         } else if (wins < losses) {
-            return console.log("%cGame Over!", "color: OrangeRed");
+            return console.log("%cGame Over!", "color: OrangeRed; font-size: 13px");
         } else if (wins == losses){
-            return console.log("%cTie! Can you outsmart them next time?", "color: Moccasin");
+            return console.log("%cTie! Can you outsmart them next time?", "color: Moccasin; font-size: 13px");
         } else {
             return console.log("Error! Something happened..")
         }
