@@ -23,7 +23,7 @@ function computerPlay(){
 function playerPlay(){
 
     //boolean variable to be used as a condition for while loop
-    var valid = false;
+    let valid = false;
 
     while (!valid){
         //prompt user for choice
@@ -34,10 +34,8 @@ function playerPlay(){
             //break out of function to allow user to exit
             console.log("%cUser cancelled prompt", "color: violet; font-size: 13px");
             return undefined;
-        }
-
-            //if user's input is not empty
-        if (input.trim() != null){
+        } else {
+            input.trim();
             //make their input all lowercase
             var playerChoice = input.toLowerCase();
 
@@ -54,7 +52,6 @@ function playerPlay(){
                 valid = false;
             }
         }
-
     }
     //return value 
     return playerChoice;
