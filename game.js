@@ -164,11 +164,11 @@ function game(){
 
     if (!error){
         if(wins > losses){
-            return console.log("%cCongratulations! You Won The Battle! ", "color: Yellow; font-size: 13px");
+            return console.log("%cVictory! You Won The Battle! ", "color: Yellow; font-size: 13px");
         } else if (wins < losses) {
-            return console.log("%cGame Over!", "color: OrangeRed; font-size: 13px");
+            return console.log("%cYou Were Defeated! Game Over!", "color: OrangeRed; font-size: 13px");
         } else if (wins == losses){
-            return console.log("%cTie! Can you outsmart them next time?", "color: Moccasin; font-size: 13px");
+            return console.log("%Draw! Who will win next time?", "color: Moccasin; font-size: 13px");
         } else {
             return console.log("Error! Something happened..")
         }
