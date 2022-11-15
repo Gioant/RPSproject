@@ -164,10 +164,10 @@ function game(){
     if (!error){
         if(wins > losses){
             console.log("%cVictory! You Won The Battle! ", "color: Yellow; font-size: 13px");
-            return console.log("%cPlayer: " + wins + " Cpu: " + losses, "color: Yellow; font-size: 13px");
+            return console.log("%cPlayer:" + wins + " Cpu:" + losses, "color: Yellow; font-size: 13px");
         } else if (wins < losses) {
             console.log("%cYou Were Defeated! Game Over!", "color: OrangeRed; font-size: 13px");
-            return console.log("%cPlayer: " + wins  + " Cpu: " + losses, "color: OrangeRed; font-size: 13px");
+            return console.log("%cPlayer:" + wins  + " Cpu:" + losses, "color: OrangeRed; font-size: 13px");
         } else if (wins == losses){
             return console.log("%cDraw! Who will win next time?", "color: Moccasin; font-size: 13px");
         } else {
