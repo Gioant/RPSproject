@@ -19,6 +19,7 @@ function computerPlay(){
 }
 
 
+//TO DO: Optimize logic for player using Objects instead of if conditions
 //function to prompt user for their choice
 function playerPlay(){
 
@@ -106,25 +107,19 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// //save the choice from functions
-// const playerSelection = playerPlay();
-// const computerSelection = computerPlay();
-
-// //to add a new line after player choices
-// console.log("\n")
-
-// console.log("%c" + playRound(playerSelection, computerSelection), "color: khaki");
-
 
 //call function
 game();
 
+// function to play 5 rounds
 function game(){
     let wins = 0;
     let losses = 0;
     let draws = 0;
     let error = false;
 
+    //Commented logic to play 5 rounds
+    /*
     //loop until we reach 5 rounds
     for (let round = 0; round < 5; round++) {
         //call functions 
@@ -177,4 +172,5 @@ function game(){
         console.log("Error! Something happened")
         return error;
     }
+    */
 }
