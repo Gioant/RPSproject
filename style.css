@@ -1,12 +1,62 @@
 /* import custom font */
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html,body {
+    height: 100%;
+}
+
 body {
-    background-color: silver;
+    background-color: gray;
+    font-family: 'Courgette', cursive;
+}
+
+.parent {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+.selections {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+
+.selection {
+background: none;
+border: none;
+outline: none;
+cursor: pointer;
+font-size: 2rem;
+transition: 100ms;
+}
+
+.selection:hover {
+    transform: scale(1.2);
+}
+
+.ft-copyright p {
+    font-size: 20px;
+}
+
+.ft-copyright {
+    display: flex;
+    gap: 0.5em;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0px;
+    height: 50px;
+    width: 100%;
 }

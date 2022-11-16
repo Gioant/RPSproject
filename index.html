@@ -5,25 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors JS</title>
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
     <link rel="stylesheet" href="./style.css"/>
     <script src="./game.js"></script>
 </head>
 <body>
+    <main class="parent">
     <!-- Div Container For Buttons -->
     <div class="selections">
-        <button class="selection">✊</button>
-        <button class="selection">✋</button>
-        <button class="selection">✌️</button>
+        <button class="selection">
+            <i class="fa-duotone fa-sword"></i>
+        </button>
+        <button class="selection">
+            <i style ="color:crimson" class="fa-duotone fa-shield-quartered"></i>
+        </button>
+        <button class="selection">
+            <i style="color:orange" class="fa-duotone fa-bow-arrow"></i>
+        </button>
     </div>
 
     <div class="results">
-        <div>You
-            <span>0</span>
+        <div>
+            Player:
+            <span class="result-score">0</span>
         </div>
         <div>
-            Computer
-            <span>0</span>
+            Computer:
+            <span class="result-score">0</span>
         </div>
     </div>
+    </main>
+    <footer class="ft-copyright">
+        <p>Copyright © 2022 GioAnt</p>
+        <i class="fa-brands fa-github"></i>
+    </footer>
 </body>
 </html>
