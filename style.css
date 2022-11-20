@@ -18,6 +18,24 @@ body {
     font-family: 'Courgette', cursive;
 }
 
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #14213d;
+    color: #fca311
+}
+
+.header h1 {
+    margin-top: 0.5%;
+    font-size: 48px;
+}
+
+.header p {
+    font-size: 18px;
+}
+
 .parent {
     display: flex;
     flex-direction: column;
