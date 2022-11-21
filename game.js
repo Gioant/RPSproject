@@ -1,9 +1,18 @@
 //get all elements with data-selection attribute
 const buttons = document.querySelectorAll('.choice');
 
+
 //get playerScore & computerScore
-const computerScore = document.querySelector('[data-computerScore]');
-const playerScore = document.querySelector('[data-playerScore]');
+let computerScore = document.querySelector('[data-computerScore]');
+let playerScore = document.querySelector('[data-playerScore]');
+
+//to display weapon from both cpu & player choices
+const playerWeapon = document.querySelector('[data-playerWeapon]');
+const cpuWeapon = document.querySelector('[data-cpuWeapon]');
+
+// to change Headers 
+const scoreTitle = document.getElementById('scoreTitle');
+const scoreMsg = document.getElementById('scoreMsg');
 
 
 //an array of objects
@@ -26,7 +35,7 @@ const weapons = [
 buttons.forEach(btn => {
     btn.addEventListener('click', () => {
         const choiceName = btn.dataset.choice;
-        const choice = weapons.find(weapon => weapon.name === choiceName)
+        const choice = weapons.find(weapon => weapon.name === choiceName);
         makeSelection(choice);
     })
 })
@@ -44,25 +53,25 @@ function makeSelection(choice) {
 
     //increment score based on who won
     if (youWin) {
-        incrementScore(playerScore)
+        scoreTitle.innerText = "You Won!";
+        incrementScore(playerScore);
     }
 
     if (computerWin) {
-        incrementScore(computerScore)
+        scoreTitle.innerText = "You Lose!";
+        incrementScore(computerScore);
     }
+
 }
 
-
+//function to increment score
 function incrementScore(scores) {
     //convert string into number and + 1
     scores.innerText = parseInt(scores.innerText) + 1;
 }
 
-//add result to page
-// function addResult(choice, winner) {
-// }
 
-//function that choices a button randomly
+//function where Computer chooses a weapon randomly
 function randomChoice() {
     const randomIndex = Math.floor(Math.random() * weapons.length);
     return weapons[randomIndex];
