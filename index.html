@@ -16,29 +16,39 @@
     </header>
 
     <main class="parent">
-    <!-- Div Container For Buttons -->
+    <div class="scoreBoard">
+        <h2 id="scoreTitle">Pick Your Weapon</h2>
+        <h3 id="scoreMsg">First To Reach 5 Points Wins!</h3>
+    
+    <!-- Scores -->
+        <div class="scores">
+            <div class="playerBox">
+                <div class="weapon" data-playerWeapon>?</div>
+                Player:
+                <span class="result-score" data-playerScore>0</span>
+            </div>
+        
+            <div class="cpuBox">
+                <div class="weapon" data-cpuWeapon>?</div>
+                Computer:
+                <span class="result-score" data-computerScore>0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container For Buttons -->
     <div class="choices">
         <button class="choice" data-choice="sword">
-            <i class="fa-duotone fa-sword"></i>
+            <i class="fa-duotone fa-sword" data-icons></i>
         </button>
         <button class="choice" data-choice="shield">
-            <i style ="color:crimson" class="fa-duotone fa-shield-quartered"></i>
+            <i style ="color:crimson" class="fa-duotone fa-shield-quartered" data-icons></i>
         </button>
         <button class="choice" data-choice="bow">
-            <i style="color:cyan" class="fa-duotone fa-bow-arrow"></i>
+            <i style="color:cyan" class="fa-duotone fa-bow-arrow" data-icons></i>
         </button>
     </div>
 
-    <div class="scores">
-        <div>
-            Player:
-            <span class="result-score" data-playerScore>0</span>
-        </div>
-        <div>
-            Computer:
-            <span class="result-score" data-computerScore>0</span>
-        </div>
-    </div>
     
     </main>
 
