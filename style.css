@@ -44,7 +44,7 @@ body {
     height: 100%;
 }
 
-.selections {
+.choices {
     display: flex;
     justify-content: space-around;
     padding: 20px 15px 20px 15px;
@@ -52,18 +52,18 @@ body {
     border-radius: 10px;
 }
 
-.selection {
+.choice {
     background: none;
     border: none;
     outline: none;
     cursor: pointer;
     font-size: 8rem;
-    transition: 100ms;
+    transition: all .3s;
     }
 
 
 
-.selection:hover {
+.choice:hover {
     transform: scale(1.2);
 }
 
