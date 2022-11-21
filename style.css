@@ -67,7 +67,7 @@ body {
     transform: scale(1.2);
 }
 
-.results {
+.scores {
     display: flex;
     width: 100%;
     justify-content: center;
