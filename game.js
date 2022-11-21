@@ -39,11 +39,8 @@ function makeSelection(choice) {
 
     //get the winner for both player & computer based on their choice of weapon
     const youWin = winner(choice, computerChoice);
-    const computerWin = winner(choice, computerChoice);
+    const computerWin = winner(computerChoice, choice);
 
-
-    //addResult(computerChoice, computerWin);
-    //addResult(choice, youWin);
 
     //increment score based on who won
     if (youWin) {
