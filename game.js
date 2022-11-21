@@ -1,27 +1,56 @@
+//get all elements with data-selection attribute
+const buttons = document.querySelectorAll('.choice');
+
+//an array of objects
+const weapons = [ 
+    {
+        name: 'sword',
+        beats: 'bow',
+    },
+    {
+        name: 'paper'
+    }
+]
+
+
+buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const choiceName = btn.dataset.choice;
+        makeSelection(choiceName);
+    })
+})
+
+
+
+function makeSelection(selection) {
+    return console.log(selection);
+}
+
 //function that outputs the choice for computer
-function computerPlay(){
+function computerPlay() {
     //generate a random number between 1-3
     let random = Math.floor(Math.random() * 3) + 1;
     let computerChoice = '';
 
     // if conditions that returns either rock,paper or scissors depending random number generated
-    if(random === 1){
+    if (random === 1) {
         computerChoice = 'rock';
         return computerChoice;
-    } else if (random === 2){
+    } else if (random === 2) {
         computerChoice = 'paper';
         return computerChoice;
     } else {
         computerChoice = 'scissors';
         return computerChoice;
     }
-    
+
+
 }
 
 
 //TO DO: Optimize logic for player using Objects instead of if conditions
 //function to prompt user for their choice
-function playerPlay(){
+function playerPlay() {
 
     //boolean variable to be used as a condition for while loop
     let valid = false;
@@ -29,7 +58,7 @@ function playerPlay(){
     //to store input from user
     let playerChoice = '';
 
-    while (!valid){
+    while (!valid) {
         //prompt user for choice
         let input = prompt("Enter Rock, Paper or Scissors");
 
@@ -43,14 +72,14 @@ function playerPlay(){
             //make their input all lowercase
             playerChoice = input.toLowerCase();
             //verify if the playerChoice is a valid choice
-            if(playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors'){
+            if (playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors') {
                 //if input is valid
                 console.log("%cYou chose: " + playerChoice, "color: Magenta"); // console log the value
                 valid = true;
                 //break out of loop just in case
                 break;
             } else {
-                 //display alert err msg
+                //display alert err msg
                 alert("Incorrect Input. Please Enter A Valid Choice From Prompt.");
                 valid = false;
             }
@@ -67,14 +96,14 @@ function playRound(playerSelection, computerSelection) {
     let draw = 'tie'
     let playerWin = false;
     //if the choice chosen from both player & cpu is the same value
-    if(playerSelection == computerSelection){
+    if (playerSelection == computerSelection) {
         //output string draw!
         console.log("%c Draw!", "color: Thistle; font-size: 14px");
         return draw;
-    // else if player is rock 
+        // else if player is rock 
     } else if (playerSelection == 'rock') {
         //verify if computer chose paper
-        if(computerSelection == 'paper'){
+        if (computerSelection == 'paper') {
             console.log("%cYou lose! Paper beats Rock", "color: orange; font-size: 14px");
             return playerWin = false;
         } else {
@@ -82,22 +111,22 @@ function playRound(playerSelection, computerSelection) {
             console.log("%cYou Win! Rock beats Scissors", "color: Lime; font-size: 14px");
             return playerWin = true;
         }
-    } 
+    }
 
     //else if player chose scissors
     else if (playerSelection == 'scissors') {
-        if(computerSelection == 'rock'){
+        if (computerSelection == 'rock') {
             console.log("%cYou lose! Rock beats Scissors", "color: orange; font-size: 14px");
             return playerWin = false;
         } else {
             console.log("%cYou Win! Scissors beats Paper", "color: Lime; font-size: 14px");
             return playerWin = true;
         }
-    } 
-    
+    }
+
     //else if player is paper
     else if (playerSelection == 'paper') {
-        if(computerSelection == 'scissors'){
+        if (computerSelection == 'scissors') {
             console.log("%cYou lose! Scissors beats paper", "color: orange; font-size: 14px");
             return playerWin = false;
         } else {
@@ -112,7 +141,7 @@ function playRound(playerSelection, computerSelection) {
 game();
 
 // function to play 5 rounds
-function game(){
+function game() {
     let wins = 0;
     let losses = 0;
     let draws = 0;
