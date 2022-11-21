@@ -2,13 +2,18 @@
 const buttons = document.querySelectorAll('.choice');
 
 //an array of objects
-const weapons = [ 
+const weapons = [
     {
         name: 'sword',
-        beats: 'bow',
+        beats: 'shield'
     },
     {
-        name: 'paper'
+        name: 'shield',
+        beats: 'bow'
+    },
+    {
+        name: 'bow',
+        beats: 'sword'
     }
 ]
 
@@ -16,14 +21,24 @@ const weapons = [
 buttons.forEach(btn => {
     btn.addEventListener('click', () => {
         const choiceName = btn.dataset.choice;
-        makeSelection(choiceName);
+        const choice = weapons.find(weapon => weapon.name === choiceName)
+        makeSelection(choice);
     })
 })
 
 
 
 function makeSelection(selection) {
-    return console.log(selection);
+    // call function and save selection for computer
+    const computerChoice = randomChoice();
+    console.log(computerChoice);
+}
+
+
+//function that choices a button randomly
+function randomChoice() {
+    const randomIndex = Math.floor(Math.random() * weapons.length);
+    return weapons[randomIndex];
 }
 
 //function that outputs the choice for computer
