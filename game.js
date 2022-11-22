@@ -41,8 +41,8 @@ const weapons = [
 // add event listener for each button
 buttons.forEach(btn => {
     btn.addEventListener('click', () => {
-        const choiceName = btn.dataset.choice;
-        const choice = weapons.find(weapon => weapon.name === choiceName);
+        var choiceName = btn.dataset.choice;
+        var choice = weapons.find(weapon => weapon.name === choiceName);
 
         //remove potential class Names 
         playerWeapon.classList.remove("fa-duotone", "fa-question", "fa-sword", "fa-shield-quartered", "fa-bow-arrow");
@@ -100,11 +100,17 @@ function createChoice(choice) {
 
     //increment score based on who won
     if (youWin) {
+        let newWord = choice.name.charAt(0).toUpperCase() + choice.name.slice(1);
+        scoreMsg.innerText = "You Chose " + newWord + " That Beats The CPU's " + computerChoice.name;
+
         scoreTitle.innerText = "You Won!";
         incrementScore(playerScore);
     }
 
     if (computerWin) {
+        let newWord = computerChoice.name.charAt(0).toUpperCase() + computerChoice.name.slice(1);
+        scoreMsg.innerText = "Computer Chose " + newWord + " That Beats Your " + choice.name;
+
         scoreTitle.innerText = "You Lost!";
         incrementScore(computerScore);
     }
@@ -184,6 +190,7 @@ function randomChoice() {
 function winner(playerChoice, computerChoice) {
     if (playerChoice.name === computerChoice.name) {
         scoreTitle.innerText = "Draw!";
+        scoreMsg.innerText = "Both Of You Chose Same Weapon"
     }
     return playerChoice.beats === computerChoice.name;
 }
