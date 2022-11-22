@@ -52,6 +52,7 @@ buttons.forEach(btn => {
             case 'sword':
                 playerWeapon.classList.add("fa-duotone", "fa-sword");
                 cpuWeapon.style.color = "revert";
+
                 break
             case 'shield':
                 playerWeapon.classList.add("fa-duotone", "fa-shield-quartered");
@@ -157,8 +158,8 @@ function createChoice(choice) {
             cpuWeapon.classList.add("fa-duotone", "fa-question");
             cpuWeapon.style.color = "unset";
 
+            scoreTitle.innerText = "Pick Your Weapon";
             scoreMsg.innerText = "First To Reach 5 Points Wins!";
-
             //remove restart button after
             restartBtn.style.display = "none";
         });
