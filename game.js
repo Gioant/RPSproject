@@ -1,6 +1,9 @@
 //get all elements with data-selection attribute
 const buttons = document.querySelectorAll('.choice');
 
+const shieldBtn = document.querySelectorAll('.choice')[1];
+const bowBtn = document.querySelectorAll('.choice')[2];
+
 //get icons
 const icons = document.querySelectorAll('[data-icons]');
 
@@ -16,6 +19,7 @@ const cpuWeapon = document.querySelector('[data-cpuWeapon]');
 // to change Headers 
 const scoreTitle = document.getElementById('scoreTitle');
 const scoreMsg = document.getElementById('scoreMsg');
+const scoreDiv = document.getElementById('test');
 
 
 //an array of objects
@@ -111,7 +115,7 @@ function makeSelection(choice) {
         })
 
         icons.forEach(i => {
-            i.style.color = "revert";
+            i.style.color = "unset";
         })
 
         if (parseInt(playerScore.innerText) === 5) {
@@ -119,6 +123,45 @@ function makeSelection(choice) {
         } else {
             scoreTitle.innerText = "Game Over! You Lose."
         }
+
+        scoreMsg.innerText = "Play Again?";
+
+
+        //create restart button
+        let restartBtn = document.createElement('button');
+        restartBtn.classList.add("ui", "blue", "button");
+        restartBtn.innerText = "Restart";
+        restartBtn.style.margin = "0";
+        restartBtn.style.marginBottom = "5%";
+        restartBtn.style.display = "initial";
+        scoreDiv.insertBefore(restartBtn, scoreMsg.nextSibling);
+
+
+        //add click event listener to button
+        restartBtn.addEventListener('click', function (event) {
+            playerWeapon.classList.remove("fa-duotone", "fa-question", "fa-sword", "fa-shield-quartered", "fa-bow-arrow");
+            cpuWeapon.classList.remove("fa-duotone", "fa-question", "fa-sword", "fa-shield-quartered", "fa-bow-arrow");
+
+            playerScore.innerText = 0;
+            computerScore.innerText = 0;
+            buttons.forEach(btn => {
+                btn.disabled = false;
+            })
+            //add proper colors back
+            shieldBtn.style.color = "crimson";
+            bowBtn.style.color = "cyan";
+
+            playerWeapon.classList.add("fa-duotone", "fa-question");
+            playerWeapon.style.color = "unset";
+
+            cpuWeapon.classList.add("fa-duotone", "fa-question");
+            cpuWeapon.style.color = "unset";
+
+            scoreMsg.innerText = "First To Reach 5 Points Wins!";
+
+            //remove restart button after
+            restartBtn.style.display = "none";
+        });
     }
 }
 
