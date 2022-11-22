@@ -49,24 +49,27 @@ function makeSelection(choice) {
     // call function and save selection for computer
     const computerChoice = randomChoice();
 
-    const newTag = document.createElement("i");
+    //remove potential class Names 
+    cpuWeapon.classList.remove("fa-duotone", "fa-question", "fa-sword", "fa-shield-quartered", "fa-bow-arrow");
+
+    //display a icon depending on weapon chosen by CPU
     switch (computerChoice.name) {
         case 'sword':
-            cpuWeapon.textContent = "";
-            newTag.classList.add("fa-duotone", "fa-sword");
-            cpuWeapon.appendChild(newTag);
+            //cpuWeapon.textContent = "";
+            cpuWeapon.classList.add("fa-duotone", "fa-sword");
+            //cpuWeapon.appendChild(newTag);
             break
         case 'shield':
-            cpuWeapon.textContent = "";
-            newTag.classList.add("fa-duotone", "fa-shield-quartered");
-            newTag.style.color = "crimson";
-            cpuWeapon.appendChild(newTag);
+            //cpuWeapon.textContent = "";
+            cpuWeapon.classList.add("fa-duotone", "fa-shield-quartered");
+            cpuWeapon.style.color = "crimson";
+            //cpuWeapon.appendChild(newTag);
             break
         case 'bow':
-            cpuWeapon.textContent = "";
-            newTag.classList.add("fa-duotone", "fa-bow-arrow");
-            newTag.style.color = "cyan";
-            cpuWeapon.appendChild(newTag);
+            //cpuWeapon.textContent = "";
+            cpuWeapon.classList.add("fa-duotone", "fa-bow-arrow");
+            cpuWeapon.style.color = "cyan";
+            //cpuWeapon.appendChild(newTag);
             break
     }
 
