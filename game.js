@@ -39,6 +39,26 @@ buttons.forEach(btn => {
     btn.addEventListener('click', () => {
         const choiceName = btn.dataset.choice;
         const choice = weapons.find(weapon => weapon.name === choiceName);
+
+        //remove potential class Names 
+        playerWeapon.classList.remove("fa-duotone", "fa-question", "fa-sword", "fa-shield-quartered", "fa-bow-arrow");
+
+        //display a icon depending on weapon chosen by Player
+        switch (choiceName) {
+            case 'sword':
+                playerWeapon.classList.add("fa-duotone", "fa-sword");
+                cpuWeapon.style.color = "revert";
+                break
+            case 'shield':
+                playerWeapon.classList.add("fa-duotone", "fa-shield-quartered");
+                playerWeapon.style.color = "crimson";
+                break
+            case 'bow':
+                playerWeapon.classList.add("fa-duotone", "fa-bow-arrow");
+                playerWeapon.style.color = "cyan";
+                break
+        }
+
         makeSelection(choice);
     })
 })
@@ -55,21 +75,16 @@ function makeSelection(choice) {
     //display a icon depending on weapon chosen by CPU
     switch (computerChoice.name) {
         case 'sword':
-            //cpuWeapon.textContent = "";
             cpuWeapon.classList.add("fa-duotone", "fa-sword");
-            //cpuWeapon.appendChild(newTag);
+            cpuWeapon.style.color = "revert";
             break
         case 'shield':
-            //cpuWeapon.textContent = "";
             cpuWeapon.classList.add("fa-duotone", "fa-shield-quartered");
             cpuWeapon.style.color = "crimson";
-            //cpuWeapon.appendChild(newTag);
             break
         case 'bow':
-            //cpuWeapon.textContent = "";
             cpuWeapon.classList.add("fa-duotone", "fa-bow-arrow");
             cpuWeapon.style.color = "cyan";
-            //cpuWeapon.appendChild(newTag);
             break
     }
 
@@ -123,6 +138,9 @@ function randomChoice() {
 
 //check winner 
 function winner(playerChoice, computerChoice) {
+    if (playerChoice.name === computerChoice.name) {
+        scoreTitle.innerText = "Draw!";
+    }
     return playerChoice.beats === computerChoice.name;
 }
 
