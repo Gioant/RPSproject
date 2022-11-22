@@ -1,6 +1,9 @@
 //get all elements with data-selection attribute
 const buttons = document.querySelectorAll('.choice');
 
+//get icons
+const icons = document.querySelectorAll('[data-icons]');
+
 
 //get playerScore & computerScore
 let computerScore = document.querySelector('[data-computerScore]');
@@ -46,6 +49,27 @@ function makeSelection(choice) {
     // call function and save selection for computer
     const computerChoice = randomChoice();
 
+    const newTag = document.createElement("i");
+    switch (computerChoice.name) {
+        case 'sword':
+            cpuWeapon.textContent = "";
+            newTag.classList.add("fa-duotone", "fa-sword");
+            cpuWeapon.appendChild(newTag);
+            break
+        case 'shield':
+            cpuWeapon.textContent = "";
+            newTag.classList.add("fa-duotone", "fa-shield-quartered");
+            newTag.style.color = "crimson";
+            cpuWeapon.appendChild(newTag);
+            break
+        case 'bow':
+            cpuWeapon.textContent = "";
+            newTag.classList.add("fa-duotone", "fa-bow-arrow");
+            newTag.style.color = "cyan";
+            cpuWeapon.appendChild(newTag);
+            break
+    }
+
     //get the winner for both player & computer based on their choice of weapon
     const youWin = winner(choice, computerChoice);
     const computerWin = winner(computerChoice, choice);
@@ -58,10 +82,26 @@ function makeSelection(choice) {
     }
 
     if (computerWin) {
-        scoreTitle.innerText = "You Lose!";
+        scoreTitle.innerText = "You Lost!";
         incrementScore(computerScore);
     }
 
+    //whenever a sore reaches 5 first
+    if (parseInt(playerScore.innerText) === 5 || parseInt(computerScore.innerText) === 5) {
+        buttons.forEach(btn => {
+            btn.disabled = true;
+        })
+
+        icons.forEach(i => {
+            i.style.color = "revert";
+        })
+
+        if (parseInt(playerScore.innerText) === 5) {
+            scoreTitle.innerText = "Congratulations! You Win.";
+        } else {
+            scoreTitle.innerText = "Game Over! You Lose."
+        }
+    }
 }
 
 //function to increment score
