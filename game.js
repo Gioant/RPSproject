@@ -63,13 +63,13 @@ buttons.forEach(btn => {
                 break
         }
 
-        makeSelection(choice);
+        createChoice(choice);
     })
 })
 
 
 
-function makeSelection(choice) {
+function createChoice(choice) {
     // call function and save selection for computer
     const computerChoice = randomChoice();
 
