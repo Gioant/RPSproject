@@ -1,0 +1,124 @@
+/* import custom font */
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body {
+    height: 100%;
+}
+
+body {
+    background-color: gray;
+    font-family: 'Courgette', cursive;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #14213d;
+    color: #fca311;
+    padding: 10px;
+}
+
+.header h1 {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 54px;
+}
+
+.header p {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.parent {
+    max-width: 700px;
+    margin: 30px auto;
+    height: 100%;
+}
+
+.choices {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 15px 20px 15px;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+.choice {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 7rem;
+    transition: all .3s;
+    }
+
+
+.choice:hover {
+    transform: scale(1.2);
+}
+
+
+.scoreBoard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.scoreBoard h2 {
+    margin: 0;
+    font-size: 40px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.scoreBoard h3 {
+    margin: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 18px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.scores {
+    font-family: 'Noto Sans', sans-serif;
+    display: flex;
+    gap: 5em;
+    margin-bottom: 10px;
+}
+
+.weapon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 75px;
+}
+
+.ft-copyright p {
+    font-size: 20px;
+}
+
+.ft-copyright {
+    display: flex;
+    gap: 0.5em;
+    justify-content: center;
+    align-items: baseline;
+    position: fixed;
+    bottom: 0px;
+    height: 50px;
+    width: 100%;
+    background-color: #14213d;
+    color: #fca311;
+    padding-top: 10px;
+}

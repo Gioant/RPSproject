@@ -1,180 +1,198 @@
-//function that outputs the choice for computer
-function computerPlay(){
-    //generate a random number between 1-3
-    let random = Math.floor(Math.random() * 3) + 1;
-    let computerChoice = '';
+//get all elements with data-selection attribute
+const buttons = document.querySelectorAll('.choice');
 
-    // if conditions that returns either rock,paper or scissors depending random number generated
-    if(random === 1){
-        computerChoice = 'rock';
-        return computerChoice;
-    } else if (random === 2){
-        computerChoice = 'paper';
-        return computerChoice;
-    } else {
-        computerChoice = 'scissors';
-        return computerChoice;
+const shieldBtn = document.querySelectorAll('.choice')[1];
+const bowBtn = document.querySelectorAll('.choice')[2];
+
+//get icons
+const icons = document.querySelectorAll('[data-icons]');
+
+
+//get playerScore & computerScore
+let computerScore = document.querySelector('[data-computerScore]');
+let playerScore = document.querySelector('[data-playerScore]');
+
+//to display weapon from both cpu & player choices
+const playerWeapon = document.querySelector('[data-playerWeapon]');
+const cpuWeapon = document.querySelector('[data-cpuWeapon]');
+
+// to change Headers 
+const scoreTitle = document.getElementById('scoreTitle');
+const scoreMsg = document.getElementById('scoreMsg');
+const scoreDiv = document.getElementById('test');
+
+
+//an array of objects
+const weapons = [
+    {
+        name: 'sword',
+        beats: 'shield'
+    },
+    {
+        name: 'shield',
+        beats: 'bow'
+    },
+    {
+        name: 'bow',
+        beats: 'sword'
     }
-    
+]
+
+// add event listener for each button
+buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        var choiceName = btn.dataset.choice;
+        var choice = weapons.find(weapon => weapon.name === choiceName);
+
+        //remove potential class Names 
+        playerWeapon.classList.remove("fa-duotone", "fa-question", "fa-sword", "fa-shield-quartered", "fa-bow-arrow");
+
+        //display a icon depending on weapon chosen by Player
+        switch (choiceName) {
+            case 'sword':
+                playerWeapon.classList.add("fa-duotone", "fa-sword");
+                cpuWeapon.style.color = "revert";
+
+                break
+            case 'shield':
+                playerWeapon.classList.add("fa-duotone", "fa-shield-quartered");
+                playerWeapon.style.color = "crimson";
+                break
+            case 'bow':
+                playerWeapon.classList.add("fa-duotone", "fa-bow-arrow");
+                playerWeapon.style.color = "cyan";
+                break
+        }
+
+        createChoice(choice);
+    })
+})
+
+
+
+function createChoice(choice) {
+    // call function and save selection for computer
+    const computerChoice = randomChoice();
+
+    //remove potential class Names 
+    cpuWeapon.classList.remove("fa-duotone", "fa-question", "fa-sword", "fa-shield-quartered", "fa-bow-arrow");
+
+    //display a icon depending on weapon chosen by CPU
+    switch (computerChoice.name) {
+        case 'sword':
+            cpuWeapon.classList.add("fa-duotone", "fa-sword");
+            cpuWeapon.style.color = "revert";
+            break
+        case 'shield':
+            cpuWeapon.classList.add("fa-duotone", "fa-shield-quartered");
+            cpuWeapon.style.color = "crimson";
+            break
+        case 'bow':
+            cpuWeapon.classList.add("fa-duotone", "fa-bow-arrow");
+            cpuWeapon.style.color = "cyan";
+            break
+    }
+
+    //get the winner for both player & computer based on their choice of weapon
+    const youWin = winner(choice, computerChoice);
+    const computerWin = winner(computerChoice, choice);
+
+
+    //increment score based on who won
+    if (youWin) {
+        let newWord = choice.name.charAt(0).toUpperCase() + choice.name.slice(1);
+        scoreMsg.innerText = "You Chose " + newWord + " That Beats The CPU's " + computerChoice.name;
+
+        scoreTitle.innerText = "You Won!";
+        incrementScore(playerScore);
+    }
+
+    if (computerWin) {
+        let newWord = computerChoice.name.charAt(0).toUpperCase() + computerChoice.name.slice(1);
+        scoreMsg.innerText = "Computer Chose " + newWord + " That Beats Your " + choice.name;
+
+        scoreTitle.innerText = "You Lost!";
+        incrementScore(computerScore);
+    }
+
+    //whenever a sore reaches 5 first
+    if (parseInt(playerScore.innerText) === 5 || parseInt(computerScore.innerText) === 5) {
+        buttons.forEach(btn => {
+            btn.disabled = true;
+        })
+
+        icons.forEach(i => {
+            i.style.color = "unset";
+        })
+
+        if (parseInt(playerScore.innerText) === 5) {
+            scoreTitle.innerText = "Congratulations! You Win.";
+        } else {
+            scoreTitle.innerText = "Game Over! You Lose."
+        }
+
+        scoreMsg.innerText = "Play Again?";
+
+
+        //create restart button
+        let restartBtn = document.createElement('button');
+        restartBtn.classList.add("ui", "blue", "button");
+        restartBtn.innerText = "Restart";
+        restartBtn.style.margin = "0";
+        restartBtn.style.marginBottom = "5%";
+        restartBtn.style.display = "initial";
+        scoreDiv.insertBefore(restartBtn, scoreMsg.nextSibling);
+
+
+        //add click event listener to button
+        restartBtn.addEventListener('click', function (event) {
+            playerWeapon.classList.remove("fa-duotone", "fa-question", "fa-sword", "fa-shield-quartered", "fa-bow-arrow");
+            cpuWeapon.classList.remove("fa-duotone", "fa-question", "fa-sword", "fa-shield-quartered", "fa-bow-arrow");
+
+            playerScore.innerText = 0;
+            computerScore.innerText = 0;
+            buttons.forEach(btn => {
+                btn.disabled = false;
+            })
+            //add proper colors back
+            shieldBtn.style.color = "crimson";
+            bowBtn.style.color = "cyan";
+
+            playerWeapon.classList.add("fa-duotone", "fa-question");
+            playerWeapon.style.color = "unset";
+
+            cpuWeapon.classList.add("fa-duotone", "fa-question");
+            cpuWeapon.style.color = "unset";
+
+            scoreTitle.innerText = "Pick Your Weapon";
+            scoreMsg.innerText = "First To Reach 5 Points Wins!";
+            //remove restart button after
+            restartBtn.style.display = "none";
+        });
+    }
+}
+
+//function to increment score
+function incrementScore(scores) {
+    //convert string into number and + 1
+    scores.innerText = parseInt(scores.innerText) + 1;
 }
 
 
-//function to prompt user for their choice
-function playerPlay(){
-
-    //boolean variable to be used as a condition for while loop
-    let valid = false;
-
-    //to store input from user
-    let playerChoice = '';
-
-    while (!valid){
-        //prompt user for choice
-        let input = prompt("Enter Rock, Paper or Scissors");
-
-        //if user pressed the cancel button
-        if (input === null) {
-            //break out of function to allow user to exit
-            console.log("%cUser cancelled prompt", "color: violet; font-size: 13px");
-            return undefined;
-        } else {
-            input.trim();
-            //make their input all lowercase
-            playerChoice = input.toLowerCase();
-            //verify if the playerChoice is a valid choice
-            if(playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors'){
-                //if input is valid
-                console.log("%cYou chose: " + playerChoice, "color: Magenta"); // console log the value
-                valid = true;
-                //break out of loop just in case
-                break;
-            } else {
-                 //display alert err msg
-                alert("Incorrect Input. Please Enter A Valid Choice From Prompt.");
-                valid = false;
-            }
-        }
-    }
-    //return value 
-    return playerChoice;
+//function where Computer chooses a weapon randomly
+function randomChoice() {
+    const randomIndex = Math.floor(Math.random() * weapons.length);
+    return weapons[randomIndex];
 }
 
 
-// to play a single round of the game
-function playRound(playerSelection, computerSelection) {
-    //creating variables
-    let draw = 'tie'
-    let playerWin = false;
-    //if the choice chosen from both player & cpu is the same value
-    if(playerSelection == computerSelection){
-        //output string draw!
-        console.log("%c Draw!", "color: Thistle; font-size: 14px");
-        return draw;
-    // else if player is rock 
-    } else if (playerSelection == 'rock') {
-        //verify if computer chose paper
-        if(computerSelection == 'paper'){
-            console.log("%cYou lose! Paper beats Rock", "color: orange; font-size: 14px");
-            return playerWin = false;
-        } else {
-            //computer answer is not paper
-            console.log("%cYou Win! Rock beats Scissors", "color: Lime; font-size: 14px");
-            return playerWin = true;
-        }
-    } 
-
-    //else if player chose scissors
-    else if (playerSelection == 'scissors') {
-        if(computerSelection == 'rock'){
-            console.log("%cYou lose! Rock beats Scissors", "color: orange; font-size: 14px");
-            return playerWin = false;
-        } else {
-            console.log("%cYou Win! Scissors beats Paper", "color: Lime; font-size: 14px");
-            return playerWin = true;
-        }
-    } 
-    
-    //else if player is paper
-    else if (playerSelection == 'paper') {
-        if(computerSelection == 'scissors'){
-            console.log("%cYou lose! Scissors beats paper", "color: orange; font-size: 14px");
-            return playerWin = false;
-        } else {
-            console.log("%cYou Win! Paper beats rock", "color: Lime; font-size: 14px");
-            return playerWin = true;
-        }
+//check winner 
+function winner(playerChoice, computerChoice) {
+    if (playerChoice.name === computerChoice.name) {
+        scoreTitle.innerText = "Draw!";
+        scoreMsg.innerText = "Both Of You Chose Same Weapon"
     }
+    return playerChoice.beats === computerChoice.name;
 }
 
-// //save the choice from functions
-// const playerSelection = playerPlay();
-// const computerSelection = computerPlay();
 
-// //to add a new line after player choices
-// console.log("\n")
-
-// console.log("%c" + playRound(playerSelection, computerSelection), "color: khaki");
-
-
-//call function
-game();
-
-function game(){
-    let wins = 0;
-    let losses = 0;
-    let draws = 0;
-    let error = false;
-
-    //loop until we reach 5 rounds
-    for (let round = 0; round < 5; round++) {
-        //call functions 
-        const playerSelection = playerPlay();
-        const computerSelection = computerPlay();
-
-        //verify if user cancelled or not 
-        if (playerSelection == undefined){
-            console.log("Exiting game... GoodBye!");
-            // if the playerPLay function value is undefined return undefined and break out of function
-            return undefined;
-        }
-
-        //output the choice made by computer to console
-        console.log("%cComputer Chose: " + computerSelection, "color: Gold");
-
-        //save the return value of function to a variable
-        let result = playRound(playerSelection, computerSelection);
-
-        //use result to check the value with certain conditions
-        if(result == true){
-            error = false;
-            wins++;
-        } else if (result == false){
-            error = false;
-            losses++;
-        } else if (result == 'tie') {
-            error = false;
-            draws++; 
-        } else if (result == undefined) {
-            error = true;
-            break;
-        }
-        console.log("\n");
-    }
-
-    if (!error){
-        if(wins > losses){
-            console.log("%cVictory! You Won The Battle! ", "color: Yellow; font-size: 13px");
-            return console.log("%cPlayer: " + wins + " Cpu: " + losses, "color: Yellow; font-size: 13px");
-        } else if (wins < losses) {
-            console.log("%cYou Were Defeated! Game Over!", "color: OrangeRed; font-size: 13px");
-            return console.log("%cPlayer: " + wins  + " Cpu: " + losses, "color: OrangeRed; font-size: 13px");
-        } else if (wins == losses){
-            return console.log("%cDraw! Who will win next time?", "color: Moccasin; font-size: 13px");
-        } else {
-            return console.log("Error! Something happened..")
-        }
-    } else { 
-        console.log("Error! Something happened")
-        return error;
-    }
-}

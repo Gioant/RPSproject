@@ -1,13 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors JS game</title>
-    <script src="./game.js"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors JS</title>
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.js"></script>
+    <link rel="stylesheet" href="./style.css"/>
 </head>
 <body>
+    <!--Adding Title For Game-->
+    <header class="header">
+        <h1>SWORD SHIELD BOW</h1>
+        <p>A Variation Of Rock Paper Scissors</p>
+    </header>
+
+    <main class="parent">
+    <div class="scoreBoard" id="test">
+        <h2 id="scoreTitle">Pick Your Weapon</h2>
+        <h3 id="scoreMsg">First To Reach 5 Points Wins!</h3>
     
+    <!-- Scores -->
+        <div class="scores">
+            <div class="playerBox">
+                <div class="weapon"><i class="fa-duotone fa-question" data-playerWeapon></i></div>
+                Player:
+                <span class="result-score" data-playerScore>0</span>
+            </div>
+        
+            <div class="cpuBox">
+                <div class="weapon"><i class="fa-duotone fa-question" data-cpuWeapon></i></div>
+                Computer:
+                <span class="result-score" data-computerScore>0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container For Buttons -->
+    <div class="choices">
+        <button class="choice" data-choice="sword">
+            <i class="fa-duotone fa-sword" data-icons></i>
+        </button>
+        <button class="choice" data-choice="shield">
+            <i style ="color:crimson" class="fa-duotone fa-shield-quartered" data-icons></i>
+        </button>
+        <button class="choice" data-choice="bow">
+            <i style="color:cyan" class="fa-duotone fa-bow-arrow" data-icons></i>
+        </button>
+    </div>
+
+    
+    </main>
+
+    <footer class="ft-copyright">
+        <p>Copyright © 2022 GioAnt</p>
+        <i class="fa-brands fa-github"></i>
+    </footer>
+
+    <script src="./game.js"></script>
 </body>
 </html>
