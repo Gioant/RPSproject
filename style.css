@@ -78,13 +78,15 @@ body {
 }
 
 .scoreBoard h2 {
+    margin: 0;
     font-size: 40px;
     font-family: 'Noto Sans', sans-serif;
 }
 
 .scoreBoard h3 {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
     font-size: 18px;
     font-family: 'Noto Sans', sans-serif;
 }
@@ -111,7 +113,7 @@ body {
     display: flex;
     gap: 0.5em;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
     position: fixed;
     bottom: 0px;
     height: 50px;
