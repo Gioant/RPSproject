@@ -1,7 +1,7 @@
 # odin-RPSproject
 
-Simple, Small Interactive Rock Paper Scissors Project
+Small Interactive Rock Paper Scissors Project!
 
-Properly Practiced Manipulating DOM elements with Javascript
+Properly Practiced Manipulating DOM elements with Javascript.
 
-No If conditions, used JS object Array
+game logic relies only on functions based on JS objects, no if conditions.
