@@ -1,7 +1,7 @@
 # odin-RPSproject
 
-A simple rock paper scissors game made with javascript using the console.
+Simple, Small Interactive Rock Paper Scissors Project
 
-to put some concepts of JS into practice🙂!
+Properly Practiced Manipulating DOM elements with Javascript
 
-Update: Currently Converting Console Game To an Interactive Game
+No If conditions, used JS object Array
