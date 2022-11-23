@@ -1,4 +1,4 @@
-# odin-RPSproject
+# Rock Paper Scissors
 
 Small Interactive Rock Paper Scissors Project!
 
