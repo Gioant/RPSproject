@@ -1,3 +1,5 @@
+//using query selectors to get all elements needed from page
+
 //get all elements with data-selection attribute
 const buttons = document.querySelectorAll('.choice');
 
