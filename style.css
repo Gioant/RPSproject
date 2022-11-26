@@ -122,3 +122,77 @@ body {
     color: #fca311;
     padding-top: 10px;
 }
+
+
+/* Media Screen Queries */
+@media (max-width: 850px) and (orientation: portrait) {
+    .header {
+        display: block;
+        justify-content: unset;
+        align-items: unset;
+        flex-direction: unset;
+        text-align: center;
+    }
+
+    .parent {
+        height: unset;
+    }
+
+    .scoreBoard {
+        text-align: center;
+        margin-top: unset;
+        margin-bottom: unset;
+    }
+
+    .choices{
+        justify-content: unset;
+        flex-direction: column;
+        width: 50%;
+        margin: auto;
+        margin-top: 5%;
+        padding: unset;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .choice {
+        font-size: 5rem;
+    }
+
+    .choice:hover {
+        transform: scale(1.2);
+    }
+
+    .ft-copyright {
+        position: static;
+        bottom: 0;
+    }
+}
+
+
+@media (max-width: 850px) and (orientation: landscape)  {
+    .scoreBoard {
+        margin-top: unset;
+        margin-bottom: unset;
+    }
+
+    .choices{
+        padding: unset;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        justify-content: space-evenly;
+        max-width: 90%;
+        margin-left: 30px;
+    }
+    .choice {
+        font-size: 5rem;
+    }
+
+    .choice:hover {
+        transform: scale(1.1);
+    }
+
+    .ft-copyright {
+        position: static;
+        bottom: 0;
+    }
+}
