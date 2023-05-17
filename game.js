@@ -54,7 +54,6 @@ buttons.forEach(btn => {
             case 'sword':
                 playerWeapon.classList.add("fa-duotone", "fa-sword");
                 playerWeapon.style.color = "revert";
-
                 break
             case 'shield':
                 playerWeapon.classList.add("fa-duotone", "fa-shield-quartered");
